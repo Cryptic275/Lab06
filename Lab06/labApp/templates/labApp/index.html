@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ student}}</title>
+</head>
+<body>
+    <section>
+        <h2>{{ student }}</h2>
+
+        <form method="post">
+            {%  csrf_token %}
+            <select name="course">
+                {% for c in unregisteredCourses %}
+                    <option value="{{ c.courseID }}"> {{ c }}</option>
+                {%  endfor %}
+            </select>
+            <input type="submit" value="Add course">
+        </form>
+        <ul>
+            {%  for c in student.courses.all %}
+                <li>{{ c }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+</body>
